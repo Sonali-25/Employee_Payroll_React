@@ -8,6 +8,7 @@ import profile6 from '../../assets/profile-images/Ellipse -1.png';
 import './payroll-form.scss';
 import logo from '../../assets/images/logo.png';
 import { userParams, Link, withRouter } from 'react-router-dom';
+import EmployeeService from '../../services/employee-service';
 
 class PayrollForm extends React.Component {
     constructor(props) {
@@ -105,6 +106,24 @@ class PayrollForm extends React.Component {
           this.setState({isError:false});
         }
       }
+      save =  async (event) => {
+        event.preventDefault();
+      
+          let employeeObject = {
+            id: this.state.id,
+            name: this.state.name,
+            profilePicture: this.state.profilePicture,
+            gender: this.state.gender,
+            departments: this.state.departments,
+            salary: this.state.salary,
+            startDate: this.state.startDate,
+            note: this.state.note
+          }
+          new EmployeeService().addEmployee(employeeObject)
+          .then(data => {
+            alert("Employee Added Successfully!!!\n" + `Name:${this.state.name}, Gender:${this.state.gender}, Salary:${this.state.salary}, Departments:${this.state.departments}`)
+          })
+        }
       render() {
         return (
           <div className="body">
