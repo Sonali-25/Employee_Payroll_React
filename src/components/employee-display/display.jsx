@@ -9,8 +9,14 @@ import profile4 from '../../assets/profile-images/Ellipse -7.png';
 import profile5 from '../../assets/profile-images/Ellipse -2.png';
 import profile6 from '../../assets/profile-images/Ellipse -1.png';
 import {withRouter} from 'react-router-dom';
+import UtilityService from '../../services/utility-service';
+
 
 const Display = (props) => {
+
+    const edit = (id) => {
+        props.history.push(`/payroll-form/${id}`);
+      }
   return (
     <table id="display" className="table">
       <tbody>
@@ -32,7 +38,7 @@ const Display = (props) => {
                   <td>{employee.gender}</td>
                   <td>{employee.departments && employee.departments.map(dept => (<div className="dept-label">{dept}</div>))}</td>
                   <td> ₹ {employee.salary}</td>
-                  <td>{stringifyDate(employee.startDate)}</td>
+                  <td>{new UtilityService().stringifyDate(employee.startDate)}</td>
                   <td><img src={deleteIcon} onClick={() => remove(employee.id)} alt="delete" />
                       <img src={editIcon} onClick={() => edit(employee.id)} alt="edit" /></td>
               </tr>
@@ -44,15 +50,6 @@ const Display = (props) => {
 }
 const remove = (id) => {
 }
-
-const edit = (id) => {
-}
-const stringifyDate = (date) => {
-  const options = { day: 'numeric', month: 'short', year: 'numeric' };
-  const newDate = !date ? "undefined" : new Date(Date.parse(date)).toLocaleDateString('en-GB', options);
-  return newDate;
-}
-
 const profiles = ["../../assets/profile-images/Ellipse -3.png", "../../assets/profile-images/Ellipse -4.png",
                   "../../assets/profile-images/Ellipse -5.png", "../../assets/profile-images/Ellipse -7.png",
                   "../../assets/profile-images/Ellipse -2.png", "../../assets/profile-images/Ellipse -1.png"];

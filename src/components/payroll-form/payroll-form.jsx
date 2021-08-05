@@ -9,6 +9,7 @@ import './payroll-form.scss';
 import logo from '../../assets/images/logo.png';
 import { userParams, Link, withRouter } from 'react-router-dom';
 import EmployeeService from '../../services/employee-service';
+import UtilityService from '../../services/utility-service';
 
 class PayrollForm extends React.Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class PayrollForm extends React.Component {
         name: '',
         profilePicture: '',
         gender: '',
+        allDepartments: ['HR', 'Sales', 'Finance', 'Engineer', 'Others'],
         departments: [],    
         salary: 40000,
         day: '1',
@@ -31,6 +33,38 @@ class PayrollForm extends React.Component {
             isError:'',
 
       }
+    }
+    componentDidMount = () => {
+      let id = this.props.match.params.id;
+      if(id !== undefined && id!=='') {
+        this.getEmployeeById(id);
+      }
+    }
+  
+    getEmployeeById = (id) => {
+      new EmployeeService().getEmployeeById(id)
+      .then(responseData => {
+        this.setEmployeeData(responseData.data);
+      }).catch(error => {
+        console.log("Error while fetching employee data by ID :\n" + JSON.stringify(error));
+      })
+    }
+    setEmployeeData = (employee) => {
+      let dateArray = new UtilityService().stringifyDate(employee.startDate).split(" ")
+      let employeeDay = (dateArray[0].length === 1) ? '0' + dateArray[0] : dateArray[0];
+      this.setState({
+        id: employee.id,
+        name: employee.name,
+        profilePicture: employee.profilePicture,
+        gender: employee.gender,
+        departments: employee.departments,
+        salary: employee.salary,      
+        day: employeeDay,      
+        month: dateArray[1],      
+        year: dateArray[2],
+        note: employee.note,
+        isUpdate: true
+      });
     }
     nameChangeHandler = (event) => {
         this.setState({name: event.target.value});
@@ -119,12 +153,25 @@ class PayrollForm extends React.Component {
             startDate: this.state.startDate,
             note: this.state.note
           }
-          new EmployeeService().addEmployee(employeeObject)
-          .then(data => {
-            alert("Employee Added Successfully!!!\n" + `Name:${this.state.name}, Gender:${this.state.gender}, Salary:${this.state.salary}, Departments:${this.state.departments}`)
-          }).catch(error => {
-            console.log("Error while adding Employee!!!\n" + JSON.stringify(error));
-          })
+          if(this.state.isUpdate) {
+            new EmployeeService().updateEmployee(employeeObject)
+            .then(responseText => {
+              alert("Employee Updated Successfully!!!\n" );
+              // this.reset();
+              this.props.history.push("/home");
+            }).catch(error => {
+              console.log("Error while updating Employee!!!\n" + JSON.stringify(error));
+            })
+          } else {
+            new EmployeeService().addEmployee(employeeObject)
+            .then(responseText => {
+              alert("Employee Added Successfully!!!\n" );
+              // this.reset();
+              this.props.history.push("/home");
+            }).catch(error => {
+              console.log("Error while adding Employee!!!\n" + JSON.stringify(error));
+            })
+          }
         }
       render() {
         return (

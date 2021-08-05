@@ -10,4 +10,10 @@ export default class EmployeeService {
   getAllEmployees() {
     return AxiosService.getService(`${URL}employee-payroll`);
   }
+  getEmployeeById(id) {
+    return AxiosService.getService(`${URL}employee-payroll/${id}`);
+  }
+  updateEmployee(data) {
+    return AxiosService.putService(`${URL}employee-payroll/${data.id}`, data);
+  }
 }
