@@ -108,7 +108,7 @@ class PayrollForm extends React.Component {
       }
       save =  async (event) => {
          event.preventDefault();
-      
+         event.stopPropagation();
           let employeeObject = {
             id: this.state.id,
             name: this.state.name,
@@ -122,6 +122,8 @@ class PayrollForm extends React.Component {
           new EmployeeService().addEmployee(employeeObject)
           .then(data => {
             alert("Employee Added Successfully!!!\n" + `Name:${this.state.name}, Gender:${this.state.gender}, Salary:${this.state.salary}, Departments:${this.state.departments}`)
+          }).catch(error => {
+            console.log("Error while adding Employee!!!\n" + JSON.stringify(error));
           })
         }
       render() {

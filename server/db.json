@@ -183,6 +183,18 @@
       ],
       "salary": 40000,
       "startDate": "2020-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 16,
+      "name": "Sanu Jha",
+      "profilePicture": "../../assets/profile-images/Ellipse -3.png",
+      "gender": "male",
+      "departments": [
+        "Sales",
+        "Engineer"
+      ],
+      "salary": "43000",
+      "startDate": "2020-12-31T18:30:00.000Z"
     }
   ]
 }
