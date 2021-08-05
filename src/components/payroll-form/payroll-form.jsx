@@ -68,7 +68,7 @@ class PayrollForm extends React.Component {
     salaryChangeHandler = (event) => {
         this.setState({salary: event.target.value});
         if(event.target.value < 4000){
-            this.setState({salaryError:'Salary must be greater than 4000'})
+            this.setState({salaryError:'Salary must be greater than 5000'})
             this.setState({isError:true})
         }else{
             this.setState({salaryError:''});
@@ -107,7 +107,7 @@ class PayrollForm extends React.Component {
         }
       }
       save =  async (event) => {
-        event.preventDefault();
+         event.preventDefault();
       
           let employeeObject = {
             id: this.state.id,

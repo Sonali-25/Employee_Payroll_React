@@ -147,6 +147,42 @@
       ],
       "salary": 40000,
       "startDate": "2020-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 13,
+      "name": "Sonali Bhardwaj",
+      "profilePicture": "../../assets/profile-images/Ellipse -3.png",
+      "gender": "female",
+      "departments": [
+        "Sales",
+        "Engineer"
+      ],
+      "salary": 40000,
+      "startDate": "2020-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 14,
+      "name": "Sonali Bhardwaj",
+      "profilePicture": "../../assets/profile-images/Ellipse -4.png",
+      "gender": "female",
+      "departments": [
+        "Sales",
+        "Finance"
+      ],
+      "salary": 40000,
+      "startDate": "2020-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 15,
+      "name": "Subrat",
+      "profilePicture": "../../assets/profile-images/Ellipse -3.png",
+      "gender": "male",
+      "departments": [
+        "Finance",
+        "Others"
+      ],
+      "salary": 40000,
+      "startDate": "2020-12-31T18:30:00.000Z"
     }
   ]
 }
