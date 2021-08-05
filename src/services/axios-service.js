@@ -7,6 +7,9 @@ class AxiosService {
   putService(url = '', payload = null, tokenRequired = false, httpOptions = null) {
     return axios.put(url, payload, tokenRequired && httpOptions);
   }
+  deleteService(url = '', tokenRequired = false, httpOptions = null) {
+    return axios.delete(url, tokenRequired && httpOptions);
+  }
   getService(url = '', tokenRequired = false, httpOptions = null) {
     return axios.get(url, tokenRequired && httpOptions);
   }
