@@ -1,19 +1,6 @@
 {
   "employee-payroll": [
     {
-      "id": 6,
-      "name": "Siddharth Ranjan",
-      "profilePicture": "../../assets/profile-images/Ellipse -2.png",
-      "gender": "male",
-      "departments": [
-        "HR",
-        "Sales",
-        "Finance"
-      ],
-      "salary": "37400",
-      "startDate": "2020-12-31T18:30:00.000Z"
-    },
-    {
       "id": 8,
       "name": "Sonali Bhardwaj",
       "profilePicture": "../../assets/profile-images/Ellipse -3.png",
@@ -117,6 +104,30 @@
         "Engineer"
       ],
       "salary": "43000",
+      "startDate": "2020-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 17,
+      "name": "Sanjay Kumar Jha",
+      "profilePicture": "../../assets/profile-images/Ellipse -3.png",
+      "gender": "male",
+      "departments": [
+        "Sales",
+        "Finance"
+      ],
+      "salary": "41500",
+      "startDate": "2020-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 18,
+      "name": "Sonali Bhardwaj",
+      "profilePicture": "../../assets/profile-images/Ellipse -5.png",
+      "gender": "female",
+      "departments": [
+        "Sales",
+        "Finance"
+      ],
+      "salary": 40000,
       "startDate": "2020-12-31T18:30:00.000Z"
     }
   ]

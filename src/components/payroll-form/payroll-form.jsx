@@ -11,6 +11,20 @@ import { userParams, Link, withRouter } from 'react-router-dom';
 import EmployeeService from '../../services/employee-service';
 import UtilityService from '../../services/utility-service';
 
+const initialState = {
+  name: '',
+  profilePicture: '',
+  gender: '',
+  allDepartments: ['HR', 'Sales', 'Finance', 'Engineer', 'Others'],
+  departments: [],    
+  salary: 40000,
+  day: '1',
+  month: 'Jan',
+  year: '2020',
+  startDate: new Date("1 Jan 2020"),
+  notes: '',
+}
+
 class PayrollForm extends React.Component {
     constructor(props) {
       super(props)
@@ -172,6 +186,9 @@ class PayrollForm extends React.Component {
               console.log("Error while adding Employee!!!\n" + JSON.stringify(error));
             })
           }
+        }
+        reset = () => {
+          this.setState({...initialState});
         }
       render() {
         return (
